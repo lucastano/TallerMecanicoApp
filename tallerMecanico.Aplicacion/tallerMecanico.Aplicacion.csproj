@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="CasosUso\UcUser\" />
+    <Folder Include="CasosUso\UcRepair\" />
+    <Folder Include="CasosUso\UcPart\" />
+    <Folder Include="ICasosUso\IucUser\" />
+    <Folder Include="ICasosUso\IucRepair\" />
+    <Folder Include="ICasosUso\IucPart\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\tallerMecanico.LogicaNegocio\tallerMecanico.LogicaNegocio.csproj" />
+  </ItemGroup>
+
+</Project>
