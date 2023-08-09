@@ -12,7 +12,7 @@ using tallerMecanico.AccesoDatos;
 namespace tallerMecanico.AccesoDatos.Migrations
 {
     [DbContext(typeof(TallerMecanicoContext))]
-    [Migration("20230808232421_inicializarBd")]
+    [Migration("20230809141017_inicializarBd")]
     partial class inicializarBd
     {
         /// <inheritdoc />
@@ -40,9 +40,6 @@ namespace tallerMecanico.AccesoDatos.Migrations
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("History")
-                        .HasColumnType("int");
 
                     b.Property<string>("Model")
                         .IsRequired()

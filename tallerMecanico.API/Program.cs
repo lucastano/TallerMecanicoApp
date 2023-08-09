@@ -1,6 +1,12 @@
 
 using Microsoft.EntityFrameworkCore;
 using tallerMecanico.AccesoDatos;
+using tallerMecanico.AccesoDatos.EntityFramework;
+using tallerMecanico.Aplicacion.CasosUso.UcCar;
+using tallerMecanico.Aplicacion.CasosUso.UcUser;
+using tallerMecanico.Aplicacion.ICasosUso.IucCar;
+using tallerMecanico.Aplicacion.ICasosUso.IucUser;
+using tallerMecanico.LogicaNegocio.IRepositorios;
 
 namespace tallerMecanico.API
 {
@@ -17,8 +23,17 @@ namespace tallerMecanico.API
             });
 
             //add use case and repositories
-
-
+            //repositorio 
+            builder.Services.AddScoped<ICarRepository,CarEFRepository>();
+            builder.Services.AddScoped<IUserRepository,UserEFRepository>();
+            //use case car
+            builder.Services.AddScoped<IAddCar, AddCar>();
+            builder.Services.AddScoped<IDeleteCar, DeleteCar>();
+            builder.Services.AddScoped<IGetAllCars, GetAllCars>();
+            builder.Services.AddScoped<IGetCar, GetCar>();
+            //use case user
+            builder.Services.AddScoped<IAddUser,AddUser>();
+            builder.Services.AddScoped<IGetUser,GetUser>();
             // Add services to the container.
 
             builder.Services.AddControllers();

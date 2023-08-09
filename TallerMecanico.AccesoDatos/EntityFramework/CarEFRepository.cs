@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,17 +29,21 @@ namespace tallerMecanico.AccesoDatos.EntityFramework
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+
+            Car? car = Get(id);
+            if (car == null) throw new Exception("no existe el vehiculo");
+            _context.Cars.Remove(car);
+            _context.SaveChanges();
         }
 
         public Car? Get(int id)
         {
-            throw new NotImplementedException();
+           return _context.Cars.Include(c=>c.Owner).FirstOrDefault(c => c.Id == id);
         }
 
         public IEnumerable<Car> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Cars.Include(c=>c.Owner);
         }
 
         public IEnumerable<Car> GetForBrand(string brand)

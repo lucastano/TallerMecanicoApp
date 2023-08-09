@@ -15,7 +15,8 @@ namespace tallerMecanico.LogicaNegocio.Entidades
         public int Year { get; set; }
         public string RegistrationPlate { get; set; }
         public User Owner { get; set; }
-        public int History { get; set; } //this is a list of repair 
+        //por el momento no voy a utilizar history 
+        //public int History { get; set; } //this is a list of repair 
 
 
     }
