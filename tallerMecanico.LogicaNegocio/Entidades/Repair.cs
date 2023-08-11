@@ -12,7 +12,7 @@ namespace tallerMecanico.LogicaNegocio.Entidades
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public Car Car { get; set; }
-
+        public string Details { get; set; }
         public List<Part>? Parts { get; set; }//this is a list of parts to repair a car 
         public string State { get; set; }//4 states: initiated,presupuestado(esperando confirmacion),in progress,finish
     }

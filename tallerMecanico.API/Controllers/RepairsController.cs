@@ -40,7 +40,8 @@ namespace tallerMecanico.API.Controllers
                     Date = dto.Date,
                     Description = dto.Description,
                     Car = ucGetCar.Ejecutar(dto.IdCar),
-                    Parts = new List<Part>()
+                    Parts = new List<Part>(),
+                    State= "initiated"
 
                 };
                 uCAddRepair.Ejecutar(repair);

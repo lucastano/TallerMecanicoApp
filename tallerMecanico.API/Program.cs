@@ -51,6 +51,7 @@ namespace tallerMecanico.API
             builder.Services.AddScoped<IAddRepair,AddRepair>();
             builder.Services.AddScoped<IGetRepair,GetRepair>();
             builder.Services.AddScoped<IGetAllRepairs,GetAllRepairs>();
+            builder.Services.AddScoped<IUpdateRepair,UpdateRepair>();
 
             // Add services to the container.
 

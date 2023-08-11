@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using tallerMecanico.LogicaNegocio.Entidades;
 
-namespace tallerMecanico.LogicaNegocio.IRepositorios
+namespace tallerMecanico.Aplicacion.ICasosUso.IucRepair
 {
-    public interface IRepairRepository:IRepository<Repair>
+    public interface IUpdateRepair
     {
-        
+        void Ejecutar(Repair entity);
     }
 }
