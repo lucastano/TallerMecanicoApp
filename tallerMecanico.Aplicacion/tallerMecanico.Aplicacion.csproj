@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CasosUso\UcRepair\" />
-    <Folder Include="ICasosUso\IucRepair\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\tallerMecanico.LogicaNegocio\tallerMecanico.LogicaNegocio.csproj" />
   </ItemGroup>
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tallerMecanico.AccesoDatos;
 
@@ -11,9 +12,11 @@ using tallerMecanico.AccesoDatos;
 namespace tallerMecanico.AccesoDatos.Migrations
 {
     [DbContext(typeof(TallerMecanicoContext))]
-    partial class TallerMecanicoContextModelSnapshot : ModelSnapshot
+    [Migration("20230811181214_actualizandobd")]
+    partial class actualizandobd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,12 +172,17 @@ namespace tallerMecanico.AccesoDatos.Migrations
             modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Repair", b =>
                 {
                     b.HasOne("tallerMecanico.LogicaNegocio.Entidades.Car", "Car")
-                        .WithMany()
+                        .WithMany("History")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Car");
+                });
+
+            modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Car", b =>
+                {
+                    b.Navigation("History");
                 });
 
             modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Repair", b =>

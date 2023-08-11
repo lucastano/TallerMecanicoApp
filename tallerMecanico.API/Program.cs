@@ -4,9 +4,11 @@ using tallerMecanico.AccesoDatos;
 using tallerMecanico.AccesoDatos.EntityFramework;
 using tallerMecanico.Aplicacion.CasosUso.UcCar;
 using tallerMecanico.Aplicacion.CasosUso.UcPart;
+using tallerMecanico.Aplicacion.CasosUso.UcRepair;
 using tallerMecanico.Aplicacion.CasosUso.UcUser;
 using tallerMecanico.Aplicacion.ICasosUso.IucCar;
 using tallerMecanico.Aplicacion.ICasosUso.IucPart;
+using tallerMecanico.Aplicacion.ICasosUso.IucRepair;
 using tallerMecanico.Aplicacion.ICasosUso.IucUser;
 using tallerMecanico.LogicaNegocio.IRepositorios;
 
@@ -29,6 +31,7 @@ namespace tallerMecanico.API
             builder.Services.AddScoped<ICarRepository,CarEFRepository>();
             builder.Services.AddScoped<IUserRepository,UserEFRepository>();
             builder.Services.AddScoped<IPartRepository,PartEFRepository>();
+            builder.Services.AddScoped<IRepairRepository,RepairEFRepository>();
             //use case car
             builder.Services.AddScoped<IAddCar, AddCar>();
             builder.Services.AddScoped<IDeleteCar, DeleteCar>();
@@ -43,6 +46,11 @@ namespace tallerMecanico.API
             builder.Services.AddScoped<IAddPart,AddPart>();
             builder.Services.AddScoped<IGetPart,GetPart>();
             builder.Services.AddScoped<IGetAllParts,GetAllParts>();
+
+            //use case Repair
+            builder.Services.AddScoped<IAddRepair,AddRepair>();
+            builder.Services.AddScoped<IGetRepair,GetRepair>();
+            builder.Services.AddScoped<IGetAllRepairs,GetAllRepairs>();
 
             // Add services to the container.
 
