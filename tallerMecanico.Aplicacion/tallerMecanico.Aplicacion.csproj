@@ -8,9 +8,7 @@
 
   <ItemGroup>
     <Folder Include="CasosUso\UcRepair\" />
-    <Folder Include="CasosUso\UcPart\" />
     <Folder Include="ICasosUso\IucRepair\" />
-    <Folder Include="ICasosUso\IucPart\" />
   </ItemGroup>
 
   <ItemGroup>

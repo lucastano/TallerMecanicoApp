@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using tallerMecanico.AccesoDatos;
 using tallerMecanico.AccesoDatos.EntityFramework;
 using tallerMecanico.Aplicacion.CasosUso.UcCar;
+using tallerMecanico.Aplicacion.CasosUso.UcPart;
 using tallerMecanico.Aplicacion.CasosUso.UcUser;
 using tallerMecanico.Aplicacion.ICasosUso.IucCar;
+using tallerMecanico.Aplicacion.ICasosUso.IucPart;
 using tallerMecanico.Aplicacion.ICasosUso.IucUser;
 using tallerMecanico.LogicaNegocio.IRepositorios;
 
@@ -26,14 +28,22 @@ namespace tallerMecanico.API
             //repositorio 
             builder.Services.AddScoped<ICarRepository,CarEFRepository>();
             builder.Services.AddScoped<IUserRepository,UserEFRepository>();
+            builder.Services.AddScoped<IPartRepository,PartEFRepository>();
             //use case car
             builder.Services.AddScoped<IAddCar, AddCar>();
             builder.Services.AddScoped<IDeleteCar, DeleteCar>();
             builder.Services.AddScoped<IGetAllCars, GetAllCars>();
             builder.Services.AddScoped<IGetCar, GetCar>();
+            builder.Services.AddScoped<IGetCarsForBrand, GetCarsForBrand>();
             //use case user
             builder.Services.AddScoped<IAddUser,AddUser>();
             builder.Services.AddScoped<IGetUser,GetUser>();
+
+            //use case Part
+            builder.Services.AddScoped<IAddPart,AddPart>();
+            builder.Services.AddScoped<IGetPart,GetPart>();
+            builder.Services.AddScoped<IGetAllParts,GetAllParts>();
+
             // Add services to the container.
 
             builder.Services.AddControllers();

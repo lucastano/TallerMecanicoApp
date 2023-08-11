@@ -16,14 +16,16 @@ namespace tallerMecanico.API.Controllers
         private readonly IGetCar UcGetCar;
         private readonly IGetAllCars UcGetAllCars;
         private readonly IGetUser UcGetUser;
+        private readonly IGetCarsForBrand UcGetCarsForBrand;
 
-        public CarsController(IAddCar ucAddCar, IDeleteCar ucDeleteCar, IGetCar ucGetCar, IGetAllCars ucGetAllCars, IGetUser UcGetUser)
+        public CarsController(IAddCar ucAddCar, IDeleteCar ucDeleteCar, IGetCar ucGetCar, IGetAllCars ucGetAllCars, IGetUser UcGetUser, IGetCarsForBrand UcGetCarsForBrand)
         {
             this.UcAddCar = ucAddCar;
             this.UcDeleteCar = ucDeleteCar;
             this.UcGetCar = ucGetCar;
             this.UcGetAllCars = ucGetAllCars;
             this.UcGetUser = UcGetUser;
+            this.UcGetCarsForBrand = UcGetCarsForBrand;
         }
 
         [HttpPost]
@@ -62,12 +64,29 @@ namespace tallerMecanico.API.Controllers
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
            
-                var Cars = UcGetAllCars.Ejecutar();
+            var Cars = UcGetAllCars.Ejecutar();
 
             return Ok(Cars);
 
 
             
+        }
+
+        [HttpGet("GetForBrand")]
+        public ActionResult<IEnumerable<Car>> GetForBrand(string brand)
+        {
+            try
+            {
+                var cars=UcGetCarsForBrand.Ejecutar(brand);
+                return Ok(cars);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500,ex.Message);
+            }
+            
+            
+
         }
 
 

@@ -48,7 +48,7 @@ namespace tallerMecanico.AccesoDatos.EntityFramework
 
         public IEnumerable<Car> GetForBrand(string brand)
         {
-            throw new NotImplementedException();
+            return _context.Cars.Include(c=>c.Owner).Where(c=>c.Brand == brand);
         }
 
         public IEnumerable<Car> GetForColor(string color)
