@@ -12,8 +12,8 @@ using tallerMecanico.AccesoDatos;
 namespace tallerMecanico.AccesoDatos.Migrations
 {
     [DbContext(typeof(TallerMecanicoContext))]
-    [Migration("20230811213439_deletehistoryoncar")]
-    partial class deletehistoryoncar
+    [Migration("20230816153401_nuevabd")]
+    partial class nuevabd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,6 +109,14 @@ namespace tallerMecanico.AccesoDatos.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -53,6 +53,18 @@ namespace tallerMecanico.API
             builder.Services.AddScoped<IGetAllRepairs,GetAllRepairs>();
             builder.Services.AddScoped<IUpdateRepair,UpdateRepair>();
 
+            //cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("NuevaPolitica", app =>
+                {
+                    app.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+
+                });
+            });
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -68,15 +80,16 @@ namespace tallerMecanico.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+           
             app.UseHttpsRedirection();
-
+            app.UseCors("NuevaPolitica");
             app.UseAuthorization();
 
 
             app.MapControllers();
 
             app.Run();
+
         }
     }
 }

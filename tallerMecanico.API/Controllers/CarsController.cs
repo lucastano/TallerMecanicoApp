@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using tallerMecanico.API.DTOs;
 using tallerMecanico.Aplicacion.ICasosUso.IucCar;
@@ -9,6 +10,7 @@ namespace tallerMecanico.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class CarsController : ControllerBase
     {
         private readonly IAddCar UcAddCar;
@@ -61,12 +63,14 @@ namespace tallerMecanico.API.Controllers
         }
 
         [HttpGet]
+       
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
            
+            
             var Cars = UcGetAllCars.Ejecutar();
 
-            return Ok(Cars);
+            return StatusCode(200,Cars);
 
 
             
