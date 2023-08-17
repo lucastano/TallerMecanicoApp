@@ -41,6 +41,7 @@ namespace tallerMecanico.API
             //use case user
             builder.Services.AddScoped<IAddUser,AddUser>();
             builder.Services.AddScoped<IGetUser,GetUser>();
+            builder.Services.AddScoped<IGetAllUsers, GetAllUsers>();
 
             //use case Part
             builder.Services.AddScoped<IAddPart,AddPart>();
