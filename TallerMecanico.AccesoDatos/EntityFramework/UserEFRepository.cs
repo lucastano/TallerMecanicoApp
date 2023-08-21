@@ -20,6 +20,8 @@ namespace tallerMecanico.AccesoDatos.EntityFramework
         public void Add(User entity)
         {
             if (entity == null) throw new Exception("falto algun dato");
+            User user = GetByEmail(entity.Email);
+            if (user != null) throw new Exception("ya existe un usuario con esa cedula");
             _context.Users.Add(entity);
             _context.SaveChanges();
         }
@@ -32,6 +34,10 @@ namespace tallerMecanico.AccesoDatos.EntityFramework
         public User? Get(int id)
         {
             return _context.Users.FirstOrDefault(x => x.Id == id);
+        }
+        public User GetByEmail(string email)
+        {
+            return _context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
         }
 
         public IEnumerable<User> GetAll()

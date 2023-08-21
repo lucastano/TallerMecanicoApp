@@ -12,8 +12,8 @@ using tallerMecanico.AccesoDatos;
 namespace tallerMecanico.AccesoDatos.Migrations
 {
     [DbContext(typeof(TallerMecanicoContext))]
-    [Migration("20230816153401_nuevabd")]
-    partial class nuevabd
+    [Migration("20230821143158_addemailinusers")]
+    partial class addemailinusers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,6 +139,13 @@ namespace tallerMecanico.AccesoDatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Ci")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -147,12 +154,20 @@ namespace tallerMecanico.AccesoDatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserLvl")
-                        .HasColumnType("int");
+                    b.Property<string>("Rol")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

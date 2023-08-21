@@ -9,17 +9,16 @@ using tallerMecanico.LogicaNegocio.IRepositorios;
 
 namespace tallerMecanico.Aplicacion.CasosUso.UcUser
 {
-    public class GetUser : IGetUser
+    public class GetUserByEmail : IGetUserByEmail
     {
-        private readonly IUserRepository _userRepository;
-        public GetUser(IUserRepository userRepository)
+        private readonly IUserRepository _repository;
+        public GetUserByEmail(IUserRepository repository)
         {
-            _userRepository = userRepository;
+            _repository = repository;
         }
-
-        public User? Ejecutar(int  id)
+        public User Ejecutar(string email)
         {
-            return _userRepository.Get(id);
+            return _repository.GetByEmail(email);
         }
     }
 }

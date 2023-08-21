@@ -9,7 +9,9 @@ namespace tallerMecanico.API.DTOs
         public string LastName { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public int UserLvl { get; set; }
+        public string Email { get; set; }
+        public int Ci { get; set; }
+        public string Password { get; set; }
     }
 }
 
