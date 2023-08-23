@@ -8,14 +8,17 @@ using System.Reflection;
 using tallerMecanico.AccesoDatos;
 using tallerMecanico.AccesoDatos.EntityFramework;
 using tallerMecanico.Aplicacion.CasosUso.UcCar;
+using tallerMecanico.Aplicacion.CasosUso.UcMechanic;
 using tallerMecanico.Aplicacion.CasosUso.UcPart;
 using tallerMecanico.Aplicacion.CasosUso.UcRepair;
-using tallerMecanico.Aplicacion.CasosUso.UcUser;
+
 using tallerMecanico.Aplicacion.ICasosUso.IucCar;
+using tallerMecanico.Aplicacion.ICasosUso.IucMechanic;
 using tallerMecanico.Aplicacion.ICasosUso.IucPart;
 using tallerMecanico.Aplicacion.ICasosUso.IucRepair;
-using tallerMecanico.Aplicacion.ICasosUso.IucUser;
+using tallerMecanico.Aplicacion.ICasosUso.IucAdministrator;
 using tallerMecanico.LogicaNegocio.IRepositorios;
+using tallerMecanico.Aplicacion.CasosUso.UcAdministrator;
 
 namespace tallerMecanico.API
 {
@@ -34,7 +37,7 @@ namespace tallerMecanico.API
             //add use case and repositories
             //repositorio 
             builder.Services.AddScoped<ICarRepository,CarEFRepository>();
-            builder.Services.AddScoped<IUserRepository,UserEFRepository>();
+            builder.Services.AddScoped<IMechanicRepository,MechanicEFRepository>();
             builder.Services.AddScoped<IPartRepository,PartEFRepository>();
             builder.Services.AddScoped<IRepairRepository,RepairEFRepository>();
             //use case car
@@ -44,10 +47,10 @@ namespace tallerMecanico.API
             builder.Services.AddScoped<IGetCar, GetCar>();
             builder.Services.AddScoped<IGetCarsForBrand, GetCarsForBrand>();
             //use case user
-            builder.Services.AddScoped<IAddUser,AddUser>();
-            builder.Services.AddScoped<IGetUser,GetUser>();
-            builder.Services.AddScoped<IGetAllUsers, GetAllUsers>();
-            builder.Services.AddScoped<IGetUserByEmail, GetUserByEmail>();
+            //builder.Services.AddScoped<IAddUser,AddUser>();
+            //builder.Services.AddScoped<IGetUser,GetUser>();
+            //builder.Services.AddScoped<IGetAllUsers, GetAllUsers>();
+            //builder.Services.AddScoped<IGetUserByEmail, GetUserByEmail>();
 
             //use case Part
             builder.Services.AddScoped<IAddPart,AddPart>();
@@ -59,6 +62,14 @@ namespace tallerMecanico.API
             builder.Services.AddScoped<IGetRepair,GetRepair>();
             builder.Services.AddScoped<IGetAllRepairs,GetAllRepairs>();
             builder.Services.AddScoped<IUpdateRepair,UpdateRepair>();
+
+            //use case Mechanic
+            builder.Services.AddScoped<IAddMechanic,AddMechanic>();
+            builder.Services.AddScoped<IGetMechanic,GetMechanic>();
+            //builder.Services.AddScoped<IGetAllMechanics,GetAllMechanics>();
+
+            //use case administrators
+            //builder.Services.AddScoped<IAddAdministrator, AddAdministrator>();
 
             //cors
             builder.Services.AddCors(options =>
@@ -98,7 +109,7 @@ namespace tallerMecanico.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(opciones =>
             {
-                opciones.SwaggerDoc("v1", new OpenApiInfo { Title = "Obligatorio APi", Version = "v1" });
+                opciones.SwaggerDoc("v1", new OpenApiInfo { Title = "Taller Api", Version = "v1" });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 

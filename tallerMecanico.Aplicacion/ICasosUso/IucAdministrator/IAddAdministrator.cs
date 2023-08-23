@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using tallerMecanico.LogicaNegocio.Entidades;
 
-namespace tallerMecanico.Aplicacion.ICasosUso.IucUser
+namespace tallerMecanico.Aplicacion.ICasosUso.IucAdministrator
 {
-    public interface IAddUser
+    public interface IAddAdministrator
     {
-        void Ejecutar(User entity);
+        void Ejecutar(Administrador entity);
     }
 }

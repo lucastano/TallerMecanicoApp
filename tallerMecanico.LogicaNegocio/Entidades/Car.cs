@@ -14,7 +14,7 @@ namespace tallerMecanico.LogicaNegocio.Entidades
         public string Color { get; set; }
         public int Year { get; set; }
         public string RegistrationPlate { get; set; }
-        public User Owner { get; set; }
+        public Customer Owner { get; set; }
         
         
 

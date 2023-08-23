@@ -15,5 +15,6 @@ namespace tallerMecanico.LogicaNegocio.Entidades
         public string Details { get; set; }
         public List<Part>? Parts { get; set; }//this is a list of parts to repair a car 
         public string State { get; set; }//4 states: initiated,presupuestado(esperando confirmacion),in progress,finish
+        public Mechanic Mechanic { get; set; }
     }
 }

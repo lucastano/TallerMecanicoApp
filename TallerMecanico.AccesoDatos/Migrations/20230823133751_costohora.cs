@@ -5,25 +5,25 @@
 namespace tallerMecanico.AccesoDatos.Migrations
 {
     /// <inheritdoc />
-    public partial class addemailinusers : Migration
+    public partial class costohora : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Email",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.DropColumn(
+                name: "CostoHora",
+                table: "Mechanics");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Email",
-                table: "Users");
+            migrationBuilder.AddColumn<double>(
+                name: "CostoHora",
+                table: "Mechanics",
+                type: "float",
+                nullable: false,
+                defaultValue: 0.0);
         }
     }
 }

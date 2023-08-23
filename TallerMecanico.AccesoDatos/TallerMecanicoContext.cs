@@ -14,12 +14,25 @@ namespace tallerMecanico.AccesoDatos
         public DbSet<Part>Parts { get; set; }
         public DbSet<Repair> Repairs { get; set; }
         public DbSet<User>Users { get; set; }
+       
+        
 
 
         public TallerMecanicoContext(DbContextOptions<TallerMecanicoContext> options) : base(options)
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().UseTpcMappingStrategy();
+            modelBuilder.Entity<Mechanic>().ToTable("Mechanics");
+            modelBuilder.Entity<Administrador>().ToTable("Administrators");
+            modelBuilder.Entity<Customer>().ToTable("Customers");
+
+            
+        }
+
 
 
 

@@ -22,6 +22,8 @@ namespace tallerMecanico.AccesoDatos.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence("UserSequence");
+
             modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Car", b =>
                 {
                     b.Property<int>("Id")
@@ -113,6 +115,9 @@ namespace tallerMecanico.AccesoDatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MechanicId")
+                        .HasColumnType("int");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -121,6 +126,8 @@ namespace tallerMecanico.AccesoDatos.Migrations
 
                     b.HasIndex("CarId");
 
+                    b.HasIndex("MechanicId");
+
                     b.ToTable("Repairs");
                 });
 
@@ -128,16 +135,10 @@ namespace tallerMecanico.AccesoDatos.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR [UserSequence]");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Ci")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -159,21 +160,52 @@ namespace tallerMecanico.AccesoDatos.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Rol")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable((string)null);
+
+                    b.UseTpcMappingStrategy();
+                });
+
+            modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Administrador", b =>
+                {
+                    b.HasBaseType("tallerMecanico.LogicaNegocio.Entidades.User");
+
+                    b.ToTable("Administrators", (string)null);
+                });
+
+            modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Customer", b =>
+                {
+                    b.HasBaseType("tallerMecanico.LogicaNegocio.Entidades.User");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ci")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Customers", (string)null);
+                });
+
+            modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Mechanic", b =>
+                {
+                    b.HasBaseType("tallerMecanico.LogicaNegocio.Entidades.User");
+
+                    b.ToTable("Mechanics", (string)null);
                 });
 
             modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Car", b =>
                 {
-                    b.HasOne("tallerMecanico.LogicaNegocio.Entidades.User", "Owner")
+                    b.HasOne("tallerMecanico.LogicaNegocio.Entidades.Customer", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -197,7 +229,15 @@ namespace tallerMecanico.AccesoDatos.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("tallerMecanico.LogicaNegocio.Entidades.Mechanic", "Mechanic")
+                        .WithMany()
+                        .HasForeignKey("MechanicId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Car");
+
+                    b.Navigation("Mechanic");
                 });
 
             modelBuilder.Entity("tallerMecanico.LogicaNegocio.Entidades.Repair", b =>

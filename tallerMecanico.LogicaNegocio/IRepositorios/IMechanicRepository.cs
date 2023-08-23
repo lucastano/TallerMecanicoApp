@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using tallerMecanico.LogicaNegocio.Entidades;
 
-namespace tallerMecanico.Aplicacion.ICasosUso.IucUser
+namespace tallerMecanico.LogicaNegocio.IRepositorios
 {
-    public interface IGetUser
+    public interface IMechanicRepository:IRepository<Mechanic>
     {
-        User Ejecutar(int id);
     }
 }

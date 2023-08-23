@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using tallerMecanico.LogicaNegocio.Entidades;
 
-namespace tallerMecanico.LogicaNegocio.IRepositorios
+namespace tallerMecanico.Aplicacion.ICasosUso.IucMechanic
 {
-    public interface IUserRepository:IRepository<User>
+    public interface IGetMechanic
     {
-        User GetByEmail(string email);
+        Mechanic Ejecutar(int id);
     }
 }
